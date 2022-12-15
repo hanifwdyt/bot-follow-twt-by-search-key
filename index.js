@@ -30,7 +30,7 @@ function delay(time) {
 
 (async () => {
     const browser = await puppeteer.launch({
-        headless: false,
+        // headless: false,
         executablePath: executablePath()
     });
     const page = await browser.newPage();
