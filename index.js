@@ -1,9 +1,14 @@
 import readlineSync from 'readline-sync';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-extra'
+import StealthPlugin from 'puppeteer-extra-plugin-stealth'
+import {
+    executablePath
+} from 'puppeteer'
+puppeteer.use(StealthPlugin())
 import chalk from 'chalk';
-import UserAgent from 'user-agents';
+// import UserAgent from 'user-agents';
 
-const userAgent = new UserAgent();
+// const userAgent = new UserAgent();
 
 
 //get Username Twitter
@@ -25,13 +30,10 @@ function delay(time) {
 
 (async () => {
     const browser = await puppeteer.launch({
-        headless: false
+        headless: false,
+        executablePath: executablePath()
     });
     const page = await browser.newPage();
-    await page.setExtraHTTPHeaders({
-        'Accept-Language': 'en-US,en;q=0.9'
-    });
-    await page.setUserAgent(userAgent.toString())
     console.log('mencoba login....')
     await page.goto('https://twitter.com/i/flow/login');
     console.log('mengisi username...')
@@ -80,7 +82,7 @@ function delay(time) {
             await delay(3000);
             const urlLike = page.url();
             console.log('menuju link untuk follow-follow orang')
-            await page.goto(urlLike + '/likes');
+            await page.goto(`https://twitter.com/${urlLike.split("/")[3]}/status/${urlLike.split("/")[5]}/likes`);
             await delay(10000);
             const followButton = await page.$$('div.css-18t94o4.css-1dbjc4n.r-42olwf.r-sdzlij.r-1phboty.r-rs99b7.r-15ysp7h.r-4wgw6l.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr')
             for (const el of followButton) {
