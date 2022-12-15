@@ -14,7 +14,7 @@ let pass = readlineSync.question(chalk.red('password twitter?  '), {
     hideEchoBack: true // The typed text on screen is hidden by `*` (default).
 });
 
-//get Username Twitter
+//get Search Keyword
 let searchKey = readlineSync.question(chalk.green('search keyword? '));
 
 function delay(time) {
