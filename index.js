@@ -20,7 +20,7 @@ let pass = readlineSync.question(chalk.red('password twitter?  '), {
 });
 
 //get Search Keyword
-let searchKey = readlineSync.question(chalk.green('search keyword? (ex:hmu nder, hmu mutualan)'));
+let searchKey = readlineSync.question(chalk.green('search keyword? (ex:hmu nder, hmu mutualan)  '));
 
 function delay(time) {
     return new Promise(function (resolve) {
@@ -89,9 +89,10 @@ function delay(time) {
 
             }
             let rd = data.reverse();
-            for (const el of rd) {
+            for (const el of data) {
                 await page.goto(el);
                 await delay(5000);
+
                 const tweetParent = await page.$('article[data-testid=tweet]')
                 await tweetParent.click()
                 await delay(3000);
@@ -100,16 +101,38 @@ function delay(time) {
                 await page.goto(`https://twitter.com/${urlLike.split("/")[3]}/status/${urlLike.split("/")[5]}/likes`);
                 await delay(5000);
 
-                let tempFollowButton = await page.$$('div.r-rs99b7')
-                
-                const followButton = tempFollowButton.slice(1)
+
+                const followButton = await page.$$('div.css-18t94o4.css-1dbjc4n.r-42olwf.r-sdzlij.r-1phboty.r-rs99b7.r-15ysp7h.r-4wgw6l.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr')
                 console.log(`mulai memfollow ${followButton.length} orang`)
-                for(const el of followButton) {
+                // for (const el of followButton) {
+                //     const url = page.url();
+                //     if(url == 'https://twitter.com/home'){
+                //         await page.goto(`https://twitter.com/${urlLike.split("/")[3]}/status/${urlLike.split("/")[5]}/likes`);
+                //     }
+                //     await delay(5000);
+                //     await page.evaluate((element) => {
+                //         element.scrollIntoView();
+                //     }, el);
+                //     await el.click()
+                //     console.log(chalk.greenBright('sukses follow'))
+                //     console.log('tunggu 10 detik sebelum menfollow akun selanjutnya')
+                //     await delay(5000);
+                // }
+
+                for (let i = 0; i < followButton.length; i++) {
                     await delay(3000);
-                    await el.click()
+                    await page.evaluate((element) => {
+                        element.scrollIntoView();
+                    }, followButton[i]);
+                    await followButton[i].click()
+                    const url = page.url();
+                    if (url == 'https://twitter.com/home') {
+                        // await page.goto(`https://twitter.com/${urlLike.split("/")[3]}/status/${urlLike.split("/")[5]}/likes`);
+                        i = followButton.length
+                    }
                     console.log(chalk.greenBright('sukses follow'))
                     console.log('tunggu 10 detik sebelum menfollow akun selanjutnya')
-                    await delay(10000);
+                    await delay(7000);
                 }
                 console.log('menunggu 10 menit biar ga banned')
                 await delay(600000)
