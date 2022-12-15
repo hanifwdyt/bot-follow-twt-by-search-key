@@ -6,9 +6,9 @@ import {
 } from 'puppeteer'
 puppeteer.use(StealthPlugin())
 import chalk from 'chalk';
-// import UserAgent from 'user-agents';
+import UserAgent from 'user-agents';
 
-// const userAgent = new UserAgent();
+const userAgent = new UserAgent();
 
 
 //get Username Twitter
@@ -30,10 +30,14 @@ function delay(time) {
 
 (async () => {
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         executablePath: executablePath()
     });
     const page = await browser.newPage();
+    await page.setExtraHTTPHeaders({
+        'Accept-Language': 'en-US,en;q=0.9'
+    });
+    await page.setUserAgent(userAgent.toString())
     console.log('mencoba login....')
     await page.goto('https://twitter.com/i/flow/login');
     console.log('mengisi username...')
@@ -73,7 +77,7 @@ function delay(time) {
 
                 data.push(...await page.evaluate(
                     () => Array.from(
-                        document.querySelectorAll('a.css-4rbku5.css-18t94o4.css-901oao.r-1bwzh9t.r-1loqt21.r-xoduu5.r-1q142lx.r-1w6e6rj.r-37j5jr.r-a023e6.r-16dba41.r-9aw3ui.r-rjixqe.r-bcqeeo.r-3s2u2q.r-qvutc0'),
+                        document.querySelectorAll('a.r-1w6e6rj'),
                         a => a.href
                     )
                 ));
