@@ -15,7 +15,7 @@ let pass = readlineSync.question(chalk.red('password twitter?  '), {
 });
 
 //get Search Keyword
-let searchKey = readlineSync.question(chalk.green('search keyword? '));
+let searchKey = readlineSync.question(chalk.green('search keyword? (ex:hmu nder, hmu mutualan)'));
 
 function delay(time) {
     return new Promise(function (resolve) {
