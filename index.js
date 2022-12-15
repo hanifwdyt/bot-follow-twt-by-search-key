@@ -97,9 +97,9 @@ function delay(time) {
                 await delay(5000);
 
                 let tempFollowButton = await page.$$('.r-rs99b7')
-                console.log(tempFollowButton)
+                
                 const followButton = tempFollowButton.slice(1)
-                console.log(followButton)
+                console.log(`mulai memfollow ${followButton.length} orang`)
                 for(const el of followButton) {
                     await delay(3000);
                     await el.click()
