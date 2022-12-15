@@ -30,7 +30,7 @@ function delay(time) {
 
 (async () => {
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         executablePath: executablePath()
     });
     const page = await browser.newPage();
@@ -100,7 +100,7 @@ function delay(time) {
                 await page.goto(`https://twitter.com/${urlLike.split("/")[3]}/status/${urlLike.split("/")[5]}/likes`);
                 await delay(5000);
 
-                let tempFollowButton = await page.$$('.r-rs99b7')
+                let tempFollowButton = await page.$$('div.r-rs99b7')
                 
                 const followButton = tempFollowButton.slice(1)
                 console.log(`mulai memfollow ${followButton.length} orang`)
