@@ -33,7 +33,7 @@ const time = () => {
     }
     (async () => {
         const browser = await puppeteer.launch({
-            // headless: false,
+            //  headless: false,
             executablePath: executablePath()
         });
         const page = await browser.newPage();
@@ -111,7 +111,8 @@ const time = () => {
                         await page.evaluate((element) => {
                             element.scrollIntoView();
                         }, followButton[i]);
-                        await followButton[i].click()
+                        await page.evaluate((e)=> e.click(), followButton[i])
+                        // await followButton[i].click()
                         const url = page.url();
                         if (url == 'https://twitter.com/home') {
                             i = followButton.length
