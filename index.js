@@ -103,7 +103,7 @@ function delay(time) {
 
 
                 const followButton = await page.$$('div.css-18t94o4.css-1dbjc4n.r-42olwf.r-sdzlij.r-1phboty.r-rs99b7.r-15ysp7h.r-4wgw6l.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr')
-                console.log(`mulai memfollow ${followButton.length - 2} orang`)
+                console.log(`mulai memfollow ${followButton.length} orang`)
                 // for (const el of followButton) {
                 //     const url = page.url();
                 //     if(url == 'https://twitter.com/home'){
