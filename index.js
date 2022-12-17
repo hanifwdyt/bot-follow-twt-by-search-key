@@ -112,7 +112,6 @@ const time = () => {
                             element.scrollIntoView();
                         }, followButton[i]);
                         await page.evaluate((e)=> e.click(), followButton[i])
-                        // await followButton[i].click()
                         const url = page.url();
                         if (url == 'https://twitter.com/home') {
                             i = followButton.length
