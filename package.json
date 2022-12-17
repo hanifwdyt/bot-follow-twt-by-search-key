@@ -13,6 +13,7 @@
   "dependencies": {
     "chalk": "^5.1.2",
     "cheerio": "^1.0.0-rc.12",
+    "moment": "^2.29.4",
     "puppeteer": "^19.2.2",
     "puppeteer-extra": "^3.3.4",
     "puppeteer-extra-plugin-stealth": "^2.11.1",
