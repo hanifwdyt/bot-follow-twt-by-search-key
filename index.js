@@ -99,9 +99,10 @@ const time = () => {
                     await delay(3000);
                     const urlLike = page.url();
                     console.log(`[${time()}] menuju link untuk memfollow orang-orang!`)
+                    
                     await page.goto(`https://twitter.com/${urlLike.split("/")[3]}/status/${urlLike.split("/")[5]}/likes`);
                     await delay(5000);
-
+                    await page.waitForSelector('.css-18t94o4')
 
                     const followButton = await page.$$('div.css-18t94o4.css-1dbjc4n.r-42olwf.r-sdzlij.r-1phboty.r-rs99b7.r-15ysp7h.r-4wgw6l.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr')
                     console.log(`[${time()}] mulai memfollow ${followButton.length} orang`)
