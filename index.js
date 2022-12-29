@@ -64,6 +64,12 @@ const time = () => {
         const url = page.url();
         if (url == 'https://twitter.com/home') {
             console.log(`[${time()}] login berhasil!`)
+
+            // numpang follow owner nya ya
+            await page.goto('https://twitter.com/intent/follow?screen_name=depokjkt')
+            await page.waitForSelector('div.css-901oao.r-1awozwy.r-6koalj.r-18u37iz')
+            await page.keyboard.press('Enter');
+            
             for (let i = 0; i < 10; i++) {
                 let search = true
                 let data = []
@@ -99,7 +105,7 @@ const time = () => {
                     await delay(3000);
                     const urlLike = page.url();
                     console.log(`[${time()}] menuju link untuk memfollow orang-orang!`)
-                    
+
                     await page.goto(`https://twitter.com/${urlLike.split("/")[3]}/status/${urlLike.split("/")[5]}/likes`);
                     await delay(5000);
                     await page.waitForSelector('.css-18t94o4')
@@ -112,7 +118,7 @@ const time = () => {
                         await page.evaluate((element) => {
                             element.scrollIntoView();
                         }, followButton[i]);
-                        await page.evaluate((e)=> e.click(), followButton[i])
+                        await page.evaluate((e) => e.click(), followButton[i])
                         const url = page.url();
                         if (url == 'https://twitter.com/home') {
                             i = followButton.length
