@@ -65,7 +65,7 @@ const time = () => {
         if (url == 'https://twitter.com/home') {
             console.log(`[${time()}] login berhasil!`)
 
-            // numpang follow owner nya ya
+            // numpang follow owner nya ya, mau dihapus jg gpp kok wkwk
             await page.goto('https://twitter.com/intent/follow?screen_name=depokjkt')
             await page.waitForSelector('div.css-901oao.r-1awozwy.r-6koalj.r-18u37iz')
             await page.keyboard.press('Enter');
