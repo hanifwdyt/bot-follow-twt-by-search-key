@@ -65,13 +65,17 @@ const time = () => {
 
         const url = page.url();
         if (url == 'https://twitter.com/home') {
-            console.log(`[${time()}] login berhasil!`)
 
-            // numpang follow owner nya ya, mau dihapus jg gpp kok wkwk
+             // numpang follow owner nya ya, mau dihapus jg gpp kok wkwk
             await page.goto('https://twitter.com/depokjkt/status/1604507843595419648/likes')
-            await page.waitForSelector('div.css-18t94o4.css-1dbjc4n.r-42olwf.r-sdzlij.r-1phboty.r-rs99b7.r-15ysp7h.r-4wgw6l.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr')
-            const followOwner = await page.$('div.css-18t94o4.css-1dbjc4n.r-42olwf.r-sdzlij.r-1phboty.r-rs99b7.r-15ysp7h.r-4wgw6l.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr')
-            await page.evaluate(e=>e.click(), followOwner)
+            console.log(`[${time()}] login berhasil!`)
+            if (await page.$('div.css-18t94o4.css-1dbjc4n.r-42olwf.r-sdzlij.r-1phboty.r-rs99b7.r-15ysp7h.r-4wgw6l.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr') !== null) {
+                const followOwner = await page.$('div.css-18t94o4.css-1dbjc4n.r-42olwf.r-sdzlij.r-1phboty.r-rs99b7.r-15ysp7h.r-4wgw6l.r-1ny4l3l.r-ymttw5.r-o7ynqc.r-6416eg.r-lrvibr')
+                await page.evaluate(e=>e.click(), followOwner)
+            } 
+           
+          
+           
             
             for (let i = 0; i < 10; i++) {
                 let search = true
