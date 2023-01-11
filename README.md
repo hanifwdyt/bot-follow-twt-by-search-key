@@ -76,9 +76,9 @@ the bot will follow 1 by 1, and delay by random second (between 5 and 20)
 
 and it will repeat with 10 minutes delay
 
-#### You Need Research By Yourself!
+### You Need Research By Yourself!
 
-The Features of this bot is only to follow anyone based on tweet that includes keyword that we set. U need to reasearch by yourself to get the best way when using this bot.
+The Features of this bot is only to follow anyone based on tweet that includes keyword that u set. U need to reasearch by yourself to get the best way when using this bot.
 
 ## Support
 
