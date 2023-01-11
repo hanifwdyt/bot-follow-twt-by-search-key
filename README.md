@@ -96,8 +96,8 @@ The Features of this bot is only to follow anyone based on tweet that includes k
 
 ## Support
 
-ENG: If you guys want to support me, i'm very happy, and i will create something nice in the future
-BAHASA: jika kamu mau mendukung saya akan sangat senang sekali, dan kedepannya saya akan membuat sesuatu yang lebih bagus untuk digunakan.
+- ENG: If you guys want to support me, i'm very happy, and i will create something nice in the future
+- BAHASA: jika kamu mau mendukung saya akan sangat senang sekali, dan kedepannya saya akan membuat sesuatu yang lebih bagus untuk digunakan.
 
 [![Donate](https://img.shields.io/badge/Donate-Saweria-%23faae2b)](https://saweria.co/hanifwidiyanto)
 
